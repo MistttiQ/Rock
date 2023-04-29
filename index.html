@@ -21,6 +21,10 @@
 			background-image: url('rock.png');
 			background-size: cover;
 			cursor: pointer;
+			animation-name: rock-float;
+			animation-duration: 2s;
+			animation-iteration-count: infinite;
+			animation-timing-function: ease-in-out;
 		}
 		
 		#score {
@@ -29,11 +33,22 @@
 			right: 20px;
 			font-size: 36px;
 		}
+		
+		@keyframes rock-float {
+			0% {
+				transform: translate(-50%, -50%) rotate(0deg);
+			}
+			50% {
+				transform: translate(-50%, -60%) rotate(5deg);
+			}
+			100% {
+				transform: translate(-50%, -50%) rotate(0deg);
+			}
+		}
 	</style>
 </head>
 <body>
 	<div id="rock"></div>
 	<div id="score">0</div>
-	<script src="game.js"></script>
 </body>
 </html>
