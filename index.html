@@ -15,15 +15,14 @@
 </head>
 <body>
 	<div id="container">
-		<div class="text" onclick="teleport()">Click me!</div>
+		<div class="text" onclick="teleport(this)">Click me!</div>
 	</div>
 
 	<script>
-		function teleport() {
+		function teleport(element) {
 			var container = document.getElementById("container");
-			var originalText = document.querySelector(".text");
 
-			var cloneText = originalText.cloneNode(true);
+			var cloneText = element.cloneNode(true);
 			container.appendChild(cloneText);
 
 			var x = Math.floor(Math.random() * window.innerWidth);
@@ -31,6 +30,8 @@
 
 			cloneText.style.left = x + "px";
 			cloneText.style.top = y + "px";
+
+			container.removeChild(element);
 		}
 	</script>
 </body>
