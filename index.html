@@ -1,1 +1,29 @@
-I gave up.
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rocks.</title>
+	<style>
+		#text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="text" onclick="runAway()">Rock.</div>
+
+	<script>
+		function runAway() {
+			var text = document.getElementById("text");
+			var x = Math.floor(Math.random() * window.innerWidth);
+			var y = Math.floor(Math.random() * window.innerHeight);
+
+			text.style.left = x + "px";
+			text.style.top = y + "px";
+		}
+	</script>
+</body>
+</html>
