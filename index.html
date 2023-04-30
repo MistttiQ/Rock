@@ -15,22 +15,48 @@
 </head>
 <body>
 	<div id="container">
-		<div class="text" onclick="runAway()">Click me!</div>
+		<div class="text" onclick="runAway(event)">Click me!</div>
 	</div>
 
 	<script>
-		function runAway() {
+		function runAway(event) {
 			var container = document.getElementById("container");
 			var originalText = document.querySelector(".text");
 
 			var cloneText = originalText.cloneNode(true);
 			container.appendChild(cloneText);
 
-			var x = Math.floor(Math.random() * window.innerWidth);
-			var y = Math.floor(Math.random() * window.innerHeight);
+			var x = event.clientX;
+			var y = event.clientY;
 
 			cloneText.style.left = x + "px";
 			cloneText.style.top = y + "px";
+
+			var offsetX = Math.floor(Math.random() * window.innerWidth);
+			var offsetY = Math.floor(Math.random() * window.innerHeight);
+
+			var distanceX = x - offsetX;
+			var distanceY = y - offsetY;
+
+			var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+			var speedX = distanceX / distance * 10;
+			var speedY = distanceY / distance * 10;
+
+			function move() {
+				offsetX += speedX;
+				offsetY += speedY;
+
+				cloneText.style.left = offsetX + "px";
+				cloneText.style.top = offsetY + "px";
+
+				if (offsetX < -100 || offsetY < -100 || offsetX > window.innerWidth + 100 || offsetY > window.innerHeight + 100) {
+					clearInterval(intervalId);
+					container.removeChild(cloneText);
+				}
+			}
+
+			var intervalId = setInterval(move, 20);
 		}
 	</script>
 </body>
