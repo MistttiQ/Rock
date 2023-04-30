@@ -9,6 +9,7 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 			cursor: pointer;
+			font-size: 24px;
 		}
 	</style>
 </head>
@@ -16,13 +17,20 @@
 	<div id="text" onclick="runAway()">Rock.</div>
 
 	<script>
+		var clicks = 0;
+
 		function runAway() {
+			clicks++;
 			var text = document.getElementById("text");
 			var x = Math.floor(Math.random() * window.innerWidth);
 			var y = Math.floor(Math.random() * window.innerHeight);
+			var fontSize = parseInt(text.style.fontSize) * 2;
+			text.style.fontSize = fontSize + "px";
 
 			text.style.left = x + "px";
 			text.style.top = y + "px";
+
+			text.innerHTML = "Click me! (" + clicks + ")";
 		}
 	</script>
 </body>
