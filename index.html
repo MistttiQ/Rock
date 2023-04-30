@@ -3,7 +3,7 @@
 <head>
 	<title>Clickable Text</title>
 	<style>
-		#text {
+		.text {
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -14,25 +14,23 @@
 	</style>
 </head>
 <body>
-	<div id="text" onclick="runAway()">Click me!</div>
+	<div id="container">
+		<div class="text" onclick="runAway()">Click me!</div>
+	</div>
 
 	<script>
-		var clicks = 0;
-		var fontSizeMultiplier = 1;
-
 		function runAway() {
-			clicks++;
-			var text = document.getElementById("text");
+			var container = document.getElementById("container");
+			var originalText = document.querySelector(".text");
+
+			var cloneText = originalText.cloneNode(true);
+			container.appendChild(cloneText);
+
 			var x = Math.floor(Math.random() * window.innerWidth);
 			var y = Math.floor(Math.random() * window.innerHeight);
-			var fontSize = parseInt(text.style.fontSize) * fontSizeMultiplier;
-			text.style.fontSize = fontSize + "px";
 
-			text.style.left = x + "px";
-			text.style.top = y + "px";
-
-			text.innerHTML = "Click me! (" + clicks + ")";
-			fontSizeMultiplier++;
+			cloneText.style.left = x + "px";
+			cloneText.style.top = y + "px";
 		}
 	</script>
 </body>
