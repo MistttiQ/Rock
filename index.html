@@ -19,19 +19,24 @@
 	</div>
 
 	<script>
+		var count = 1;
+
 		function teleport(element) {
 			var container = document.getElementById("container");
 
-			var cloneText = element.cloneNode(true);
-			container.appendChild(cloneText);
+			for (var i = 0; i < count; i++) {
+				var cloneText = element.cloneNode(true);
+				container.appendChild(cloneText);
 
-			var x = Math.floor(Math.random() * window.innerWidth);
-			var y = Math.floor(Math.random() * window.innerHeight);
+				var x = Math.floor(Math.random() * window.innerWidth);
+				var y = Math.floor(Math.random() * window.innerHeight);
 
-			cloneText.style.left = x + "px";
-			cloneText.style.top = y + "px";
+				cloneText.style.left = x + "px";
+				cloneText.style.top = y + "px";
+			}
 
 			container.removeChild(element);
+			count *= 2;
 		}
 	</script>
 </body>
