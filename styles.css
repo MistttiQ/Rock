@@ -14,3 +14,17 @@ pre {
   font-size: 20px;
   margin: 0;
 }
+
+#rock {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: left 0.5s ease-in-out;
+}
+
+#player {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
