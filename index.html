@@ -1,43 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Clickable Text</title>
-	<style>
-		.text {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			cursor: pointer;
-			font-size: 24px;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Kick the Rock Game</title>
 </head>
 <body>
-	<div id="container">
-		<div class="text" onclick="teleport(this)">Click me!</div>
-	</div>
-
-	<script>
-		var count = 1;
-
-		function teleport(element) {
-			var container = document.getElementById("container");
-
-			for (var i = 0; i < count; i++) {
-				var cloneText = element.cloneNode(true);
-				container.appendChild(cloneText);
-
-				var x = Math.floor(Math.random() * window.innerWidth);
-				var y = Math.floor(Math.random() * window.innerHeight);
-
-				cloneText.style.left = x + "px";
-				cloneText.style.top = y + "px";
-			}
-
-			container.removeChild(element);
-			count *= 2;
-		}
-	</script>
+  <div id="game-container">
+    <pre id="rock">  O  </pre>
+    <pre id="player">  |  </pre>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
